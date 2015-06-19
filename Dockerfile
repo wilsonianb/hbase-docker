@@ -28,6 +28,7 @@ RUN mkdir -p /data/hbase /opt/hbase/logs
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV HBASE_SERVER /opt/hbase/bin/hbase
+ENV PATH /opt:/opt/hbase/bin:$PATH
 
 ADD ./hbase-site.xml /opt/hbase/conf/hbase-site.xml
 
