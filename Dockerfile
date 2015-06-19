@@ -35,7 +35,8 @@ ADD ./zoo.cfg /opt/hbase/conf/zoo.cfg
 
 ADD ./hbase-server /opt/hbase-server
 
-
+# Rest API
+EXPOSE 8080
 # Thrift API
 EXPOSE 9090
 # Thrift Web UI
