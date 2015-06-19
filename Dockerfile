@@ -17,10 +17,10 @@ RUN apt-get update
 RUN apt-get install -y build-essential curl openjdk-7-jdk
 
 # Download and Install HBase
-ENV HBASE_VERSION 0.94.26
+ENV HBASE_VERSION 1.0.1
 
-RUN mkdir -p /opt/downloads && cd /opt/downloads && curl -SsfLO "http://archive.apache.org/dist/hbase/hbase-$HBASE_VERSION/hbase-$HBASE_VERSION.tar.gz"
-RUN cd /opt && tar xvfz /opt/downloads/hbase-$HBASE_VERSION.tar.gz
+RUN mkdir -p /opt/downloads && cd /opt/downloads && curl -SsfLO "http://archive.apache.org/dist/hbase/hbase-$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz"
+RUN cd /opt && tar xvfz /opt/downloads/hbase-$HBASE_VERSION-bin.tar.gz
 RUN mv /opt/hbase-$HBASE_VERSION /opt/hbase
 
 # Data will go here (see hbase-site.xml)
@@ -43,13 +43,13 @@ EXPOSE 9090
 EXPOSE 9095
 # HBase's zookeeper - used to find servers
 EXPOSE 2181
-# HBase Master API port
-EXPOSE 60000
-# HBase Master web UI at :60010/master-status;  ZK at :60010/zk.jsp
-EXPOSE 60010
+## HBase Master API port ??
+#EXPOSE 16000
+# HBase Master web UI at :15010/master-status;  ZK at :16010/zk.jsp
+EXPOSE 16010
 # Region server API port
-EXPOSE 60020
-# HBase Region server web UI at :60030/rs-status
-EXPOSE 60030
+EXPOSE 16020
+# HBase Region server web UI at :16030/rs-status
+EXPOSE 16030
 
 CMD ["/opt/hbase-server"]

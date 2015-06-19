@@ -54,8 +54,8 @@ Find Hbase status
 Find out the web UI ports:
 
 	$ host='localhost'
-	$ master_ui_port=$(docker port $id 60010)
-	$ region_ui_port=$(docker port $id 60030)
+	$ master_ui_port=$(docker port $id 16010)
+	$ region_ui_port=$(docker port $id 16030)
 	$ thrift_ui_port=$(docker port $id 9095)
 
 Construct the URLs to check it out:
@@ -66,13 +66,13 @@ Construct the URLs to check it out:
 
 With the raw `docker run` the API ports can be found at:
 
-	$ master_api_port=$(docker port $id 60000)
-	$ region_api_port=$(docker port $id 60020)
+	$ master_api_port=$(docker port $id 16000)
+	$ region_api_port=$(docker port $id 16020)
 	$ thrift_api_port=$(docker port $id 9090)
 	$ zk_api_port=$(docker port $id 2181)
 
-With `start-hbase.sh` they are always the same local ones: 60000,
-60020 and 9090 which HBase expects.
+With `start-hbase.sh` they are always the same local ones: 16000,
+16020 and 9090 which HBase expects.
 
 
 See HBase Logs
@@ -154,12 +154,12 @@ these server-private urls in a local browser so here is a
 
     Host my-docker-server
 	Hostname 1.2.3.4
-    LocalForward 127.0.0.1:$master_ui_port 127.0.0.1:60010
-    LocalForward 127.0.0.1:$region_ui_port 127.0.0.1:60030
+    LocalForward 127.0.0.1:$master_ui_port 127.0.0.1:16010
+    LocalForward 127.0.0.1:$region_ui_port 127.0.0.1:16030
     LocalForward 127.0.0.1:$thrift_ui_port 127.0.0.1:9095
 
 When you `ssh my-docker-server` ssh connects to the docker server and
-forwards request on your local machine on ports 60010 / 60030 to the
+forwards request on your local machine on ports 16010 / 16030 to the
 remote ports that are attached to the hbase container.
 
 The downside above is you have to edit the SSH config file every time
@@ -167,10 +167,10 @@ you restart docker because the ports will have changed.
 
 The bottom line, you can use these URLs to see what's going on:
 
-  * http://localhost:60010/master-status for the Master Server
-  * http://localhost:60030/rs-status for Region Server
+  * http://localhost:16010/master-status for the Master Server
+  * http://localhost:16030/rs-status for Region Server
   * http://localhost:9095/thrift.jsp for the thrift UI
-  * http://localhost:60030/zk.jsp for the embedded Zookeeper
+  * http://localhost:16030/zk.jsp for the embedded Zookeeper
 
 to see what's going on in the container and since both your local
 machine and the container are using localhost (aka 127.0.0.1), even

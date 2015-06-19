@@ -28,7 +28,7 @@ else
 fi
 
 echo "Now connect to hbase at localhost on the standard ports"
-echo "  ZK 2181, Thrift 9090, Master 60000, Region 60020"
+echo "  ZK 2181, Thrift 9090, Master 16000, Region 16020"
 echo "Or connect to host hbase-docker (in the container) on the same ports"
 echo ""
 echo "For docker status:"
