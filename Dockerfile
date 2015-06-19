@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install build requirements
 RUN apt-get update
-RUN apt-get install -y build-essential curl openjdk-6-jdk
+RUN apt-get install -y build-essential curl openjdk-7-jdk
 
 # Download and Install HBase
 ENV HBASE_VERSION 0.94.26
@@ -26,7 +26,7 @@ RUN mv /opt/hbase-$HBASE_VERSION /opt/hbase
 # Data will go here (see hbase-site.xml)
 RUN mkdir -p /data/hbase /opt/hbase/logs
 
-ENV JAVA_HOME /usr/lib/jvm/java-6-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV HBASE_SERVER /opt/hbase/bin/hbase
 
 ADD ./hbase-site.xml /opt/hbase/conf/hbase-site.xml
