@@ -13,7 +13,7 @@ echo "$IP $(hostname)" >> /etc/hosts
 
 # Thrift server (background)
 # Ports: 9090 API and 9095 UI
-$HBASE_SERVER thrift start > /opt/hbase/logs/hbase-thrift.log 2>&1 &
+$HBASE_SERVER thrift start -hsha > /opt/hbase/logs/hbase-thrift.log 2>&1 &
 
 # Rest server (background)
 # Ports: 8080 API
